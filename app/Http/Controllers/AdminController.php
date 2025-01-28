@@ -45,9 +45,11 @@ class AdminController extends Controller
     
     public function responses (){
 
-         $responses = Startup::all(); 
+        //  $responses = Startup::all(); 
 
-        return view ('admin.responses' , compact('responses'));
+        // return view ('admin.responses' , compact('responses'));
+        return view ('admin.responses' );
+
     }
 
     public function settings () {

@@ -28,19 +28,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($responses as $response)
-                <tr>
-                    <td>{{ $response->companyName }}</td>
-                    <td>{{ $response->founded }}</td>
-                    <td>{{ $response->website }}</td>
-                    <td>{{ $response->teamSize }}</td>
-                    <td>{{ $response->founderInfo }}</td>
-                    <td>{{ $response->productDescription }}</td>
-                    <td>{{ $response->targetMarket }}</td>
-                    <td>{{ $response->fundingStage }}</td>
-                    <td>{{ $response->fundingNeeds }}</td>
-                </tr>
-            @endforeach
+           
         </tbody>
     </table>
 </div>
