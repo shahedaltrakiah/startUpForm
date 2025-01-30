@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ URL::asset('images/favicon.ico')}}">
+
     <title>Admin Dashboard</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
@@ -11,6 +13,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="{{ URL::asset('css/adminStyle.css')}}" rel="stylesheet" type="text/css" media="all">
+
+    <style>
+        ol,
+        ul {
+            padding-left: 0rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,31 +33,43 @@
             <nav>
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                        <a href="{{ route('admin.dashboard') }}"
+                            class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                             <i class="fas fa-home"></i>
                             Overview
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('responses') }}"
-                            class="nav-link {{ request()->routeIs('responses') ? 'active' : '' }}">
+                        <a href="{{ route('admin.responses') }}"
+                            class="nav-link {{ request()->routeIs('admin.responses') ? 'active' : '' }}">
                             <i class="fas fa-list"></i>
                             Responses
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('shared') }}"
-                            class="nav-link {{ request()->routeIs('shared') ? 'active' : '' }}">
+                        <a href="{{ route('admin.shared') }}"
+                            class="nav-link {{ request()->routeIs('admin.shared') ? 'active' : '' }}">
                             <i class="fas fa-share"></i>
                             Shared
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('settings') }}"
-                            class="nav-link {{ request()->routeIs('settings') ? 'active' : '' }}">
+                        <a href="{{ route('admin.settings') }}"
+                            class="nav-link {{ request()->routeIs('admin.settings') ? 'active' : '' }}">
                             <i class="fas fa-cog"></i>
                             Settings
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
+                            style="display: none;">
+                            @csrf
+                        </form>
+                        <a class="nav-link" href="#"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span>Logout</span>
                         </a>
                     </li>
                 </ul>

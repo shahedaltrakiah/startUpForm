@@ -16,35 +16,34 @@ use App\Http\Controllers\StartupController;
 */
 
 
-Route::get('/', function () {  return view('mainForm.index');  });
-
+Route::get('/', function () {
+    return view('mainForm.index');
+});
 
 Route::post('/startup', [StartupController::class, 'store'])->name('startup.store');
 
-Route::get('/login', action: [AdminController::class, 'showLoginForm'])->name('login');
 
-Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::prefix('admin')->name('admin.')->group(function () {
 
-Route::get('/responses', [AdminController::class,'responses'])->name('responses');
+    Route::get('/login', action: [AdminController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AdminController::class, 'login'])->name('admin.login');
 
-Route::get('/shared', [AdminController::class,'shared'])->name('shared');
+    Route::middleware('auth:admin')->group(function () {
 
-Route::get('/settings', [AdminController::class,' settings'])->name('settings');
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
+        Route::get('/responses', [AdminController::class, 'responses'])->name('responses');
 
-Route::get('/login', action: [AdminController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AdminController::class, 'login'])->name('admin.login');
+        Route::get('/shared', [AdminController::class, 'shared'])->name('shared');
 
-// Route::middleware('auth')->group(function () {
+        Route::get('/settings', [AdminController::class, ' settings'])->name('settings');
 
-//     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
 
-//     Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
+    });
 
-// });
+});
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

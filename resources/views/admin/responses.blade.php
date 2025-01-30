@@ -64,7 +64,7 @@
                     <tr>
                         <th>
                         </th>
-                        <th>Startup Name</th>
+                        <th>Startup</th>
                         <th>Email</th>
                         <th>Comment</th>
                         <th>Date</th>
