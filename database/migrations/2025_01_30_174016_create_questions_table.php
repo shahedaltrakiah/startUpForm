@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('question_text');
             $table->string('question_type'); // e.g., "text", "radio", "dropdown"
             $table->boolean('required')->default(false);
+            $table->boolean('proof')->default(true);
             $table->timestamps();
         });
     }
