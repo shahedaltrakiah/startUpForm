@@ -4,7 +4,8 @@
 
 <!-- Header Section -->
 <div class="content-header mb-4">
-    <h1 class="h3">Edit Form</h1>
+    <h1 class="h3"> <i class="fa-solid fa-file-pen"></i>
+        Edit Form</h1>
 </div>
 
 <!-- Response Sections -->
@@ -18,7 +19,7 @@
             </button>
         </div>
     </div>
-    
+
     <div class="col-12">
         <!-- Ideation Section -->
         <div class="response-card mb-4 animate__animated animate__fadeIn">

@@ -3,7 +3,8 @@
 @section('adminContent')
 
 <div class="content-header mb-4">
-    <h1 class="h3">Responses</h1>
+    <h1 class="h3"> <i class="fas fa-list"></i>
+        Responses</h1>
     <div class="d-flex gap-3">
         <button class="btn btn-success">
             <i class="fas fa-file-export me-2"></i>Export

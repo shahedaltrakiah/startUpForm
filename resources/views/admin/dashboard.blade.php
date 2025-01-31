@@ -3,7 +3,9 @@
 @section('adminContent')
 
 <div class="content-header">
-    <h1 class="h3 mb-4">Dashboard Overview</h1>
+    <h1 class="h3 mb-4">
+        Dashboard Overview
+    </h1>
 </div>
 
 <!-- Statistics Cards -->
