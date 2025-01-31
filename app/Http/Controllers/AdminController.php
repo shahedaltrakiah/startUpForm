@@ -52,13 +52,21 @@ class AdminController extends Controller
 
     }
 
+    public function editForm () {
+        return view('admin.editForm');
+    }
+
+    public function sharedRespone() {
+        return view('admin.sharedRespone');
+    }
+
     public function settings () {
         return view('admin.settings');
     }
 
-    public function shared ()
+    public function viewResponse ()
     {
-        return view('admin.shared');
+        return view('admin.viewResponse');
     }
 
     // Logout
@@ -67,7 +75,5 @@ class AdminController extends Controller
         Auth::guard('admin')->logout();
         return redirect()->route('admin.login');
     }
-
-   
 
 }

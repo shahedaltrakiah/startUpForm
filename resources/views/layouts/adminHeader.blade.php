@@ -47,10 +47,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.shared') }}"
-                            class="nav-link {{ request()->routeIs('admin.shared') ? 'active' : '' }}">
-                            <i class="fas fa-share"></i>
-                            Shared
+                        <a href="{{ route('admin.editForm') }}"
+                            class="nav-link {{ request()->routeIs('admin.editForm') ? 'active' : '' }}">
+                            <i class="fa-solid fa-file-pen"></i>
+                            Edit Form
                         </a>
                     </li>
                     <li class="nav-item">
@@ -61,7 +61,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item" style="margin-top:250px;">
                         <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
                             style="display: none;">
                             @csrf
