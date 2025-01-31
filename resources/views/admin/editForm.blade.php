@@ -6,19 +6,22 @@
 <div class="content-header mb-4">
     <h1 class="h3"> <i class="fa-solid fa-file-pen"></i>
         Edit Form</h1>
+
+    <!-- Action Buttons -->
+    <div class="d-flex justify-content-end mb-4 gap-2">
+        <button class="btn btn-outline-primary">
+            <i class="fa-solid fa-plus"></i>Add Section
+        </button>
+        <button class="btn btn-success">
+            <i class="fas fa-check me-2"></i>Save
+        </button>
+    </div>
 </div>
 
 <!-- Response Sections -->
 <div class="row">
 
-    <!-- Action Buttons -->
-    <div class="d-flex justify-content-between mb-4">
-        <div class="d-flex gap-2">
-            <button class="btn btn-success">
-                <i class="fas fa-check me-2"></i>Save
-            </button>
-        </div>
-    </div>
+
 
     <div class="col-12">
         <!-- Ideation Section -->
