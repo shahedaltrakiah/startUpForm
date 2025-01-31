@@ -5,7 +5,7 @@
 <div class="content-header mb-4">
     <h1 class="h3"> <i class="fas fa-list"></i> Responses</h1>
     <div class="d-flex gap-3">
-        <button class="btn btn-success">
+        <button id="exportBtn" class="btn btn-success">
             <i class="fas fa-file-export me-2"></i>Export
         </button>
     </div>
@@ -79,7 +79,7 @@
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
     $(document).ready(function() {
         $('#responsesTable').DataTable();
@@ -104,6 +104,20 @@
         copyText.setSelectionRange(0, 99999);
         document.execCommand("copy");
         alert("Copied: " + copyText.value);
+    });
+
+    // Export table as Excel without the Actions column
+    $('#exportBtn').click(function() {
+        let table = document.getElementById("responsesTable");
+        let clonedTable = table.cloneNode(true);
+        let actionIndex = 4; // The index of the Actions column
+
+        for (let row of clonedTable.rows) {
+            row.deleteCell(actionIndex);
+        }
+
+        let workbook = XLSX.utils.table_to_book(clonedTable, { sheet: "Responses" });
+        XLSX.writeFile(workbook, "responses.xlsx");
     });
 </script>
 
