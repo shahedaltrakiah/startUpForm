@@ -12,10 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('responses', function (Blueprint $table) {
-            $table->foreignId('response_id')->constrained('form_responses')->onDelete('cascade');
-            $table->foreignId('question_id')->constrained('questions')->onDelete('cascade');
-            $table->text('response');
-            $table->primary(['response_id', 'question_id']);
+            $table->id();
+            $table->foreignId('form_id')->constrained()->onDelete('cascade');
+            $table->string('startup_name');
+            $table->string('startup_email');
+            $table->integer('startup_phoneNumber');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending'); 
+            $table->timestamps();
         });
     }
 

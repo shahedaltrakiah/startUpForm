@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Proof extends Model
 {
     use HasFactory;
-    protected $fillable = ['response_id', 'question_id', 'proof_description', 'proof_submission'];
 
-    public function response()
+    protected $fillable = ['answer_id', 'proof_value'];
+
+    protected $table = 'proof';
+
+    public function answer()
     {
-        return $this->belongsTo(Response::class);
+        return $this->belongsTo(Answer::class);
     }
 }
-

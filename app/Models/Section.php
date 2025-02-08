@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FormSection extends Model
+class Section extends Model
 {
     use HasFactory;
-    protected $fillable = ['form_id', 'section_name', 'order'];
+
+    protected $fillable = ['form_id', 'name', 'section_order'];
 
     public function form()
     {
@@ -20,4 +21,3 @@ class FormSection extends Model
         return $this->hasMany(Question::class);
     }
 }
-

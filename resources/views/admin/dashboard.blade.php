@@ -16,7 +16,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <h6 class="text-muted mb-2">Total Responses</h6>
-                        <h2 class="mb-0">2,450</h2>
+                        <h2 class="mb-0">{{ $totalResponses }}</h2>
                     </div>
                     <div class="bg-primary bg-opacity-10 p-3 rounded">
                         <i class="fas fa-comments text-primary fa-2x"></i>
@@ -31,8 +31,8 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <h6 class="text-muted mb-2">Active StartUp</h6>
-                        <h2 class="mb-0">1,280</h2>
+                        <h6 class="text-muted mb-2">StartUp</h6>
+                        <h2 class="mb-0">{{ $totalStartups }}</h2>
                     </div>
                     <div class="bg-success bg-opacity-10 p-3 rounded">
                         <i class="fa-solid fa-building text-success fa-2x"></i>
@@ -47,8 +47,8 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <h6 class="text-muted mb-2">Shared Content</h6>
-                        <h2 class="mb-0">865</h2>
+                        <h6 class="text-muted mb-2">Shared Response</h6>
+                        <h2 class="mb-0">{{ $sharedResponses }}</h2>
                     </div>
                     <div class="bg-warning bg-opacity-10 p-3 rounded">
                         <i class="fas fa-share-alt text-warning fa-2x"></i>
@@ -63,11 +63,11 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <h6 class="text-muted mb-2">Response Rate</h6>
-                        <h2 class="mb-0">92%</h2>
+                        <h6 class="text-muted mb-2"> Approved Response</h6>
+                        <h2 class="mb-0">{{ $approveResponse }}</h2>
                     </div>
                     <div class="bg-info bg-opacity-10 p-3 rounded">
-                        <i class="fas fa-chart-line text-info fa-2x"></i>
+                        <i class="fa-solid fa-thumbs-up text-info fa-2x"></i>
                     </div>
                 </div>
             </div>
@@ -85,14 +85,31 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Response ID</th>
-                        <th>StartUp Name</th>
+                        <th>Startup</th>
                         <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Status</th>
                         <th>Date</th>
                     </tr>
                 </thead>
                 <tbody>
-
+                    @foreach($recentActivities as $activity)
+                        <tr>
+                            <td>{{ $activity->startup_name }}</td>
+                            <td>{{ $activity->startup_email }}</td>
+                            <td>{{ $activity->startup_phoneNumber }}</td>
+                            <td>
+                                @if($activity->status == 'pending')
+                                    <span class="badge badge-warning">{{ strtoupper($activity->status) }}</span>
+                                @elseif($activity->status == 'approved')
+                                    <span class="badge badge-success">{{ strtoupper($activity->status) }}</span>
+                                @elseif($activity->status == 'rejected')
+                                    <span class="badge badge-danger">{{ strtoupper($activity->status) }}</span>
+                                @endif
+                            </td>
+                            <td>{{ \Carbon\Carbon::parse($activity->submission_date)->format('Y-m-d H:i') }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

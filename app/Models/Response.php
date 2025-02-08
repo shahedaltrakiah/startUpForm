@@ -8,15 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Response extends Model
 {
     use HasFactory;
-    protected $fillable = ['response_id', 'question_id', 'response'];
 
-    public function question()
+    protected $fillable = ['form_id', 'startup_name', 'startup_email', 'startup_phoneNumber', 'status'];
+
+    public function form()
     {
-        return $this->belongsTo(Question::class);
+        return $this->belongsTo(Form::class);
     }
 
-    public function formResponse()
+    public function answers()
     {
-        return $this->belongsTo(FormResponse::class, 'response_id');
+        return $this->hasMany(Answer::class);
     }
+
+    public function sections()
+{
+    return $this->hasMany(Section::class);
+}
+
 }

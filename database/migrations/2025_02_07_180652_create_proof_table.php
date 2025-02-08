@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('form_responses', function (Blueprint $table) {
+        Schema::create('proof', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('form_id')->constrained('forms')->onDelete('cascade');
-            $table->string('submitter_name')->nullable();
-            $table->string('submitter_email')->nullable();
-            $table->timestamp('submission_date')->useCurrent();
+            $table->foreignId('answer_id')->constrained()->onDelete('cascade');
+            $table->text('proof_value');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('form_responses');
+        Schema::dropIfExists('proof');
     }
 };

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('section_id')->constrained('form_sections')->onDelete('cascade');
+            $table->foreignId('section_id')->constrained()->onDelete('cascade');
             $table->text('question_text');
-            $table->string('question_type'); // e.g., "text", "radio", "dropdown"
-            $table->boolean('required')->default(false);
-            $table->boolean('proof')->default(true);
+            $table->enum('input_type', ['text', 'textarea', 'number', 'file', 'link']);
+            $table->boolean('is_required')->default(true);
+            $table->string('proof_text')->nullable();
             $table->timestamps();
         });
     }

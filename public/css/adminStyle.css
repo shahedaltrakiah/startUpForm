@@ -1,7 +1,8 @@
   /* Root Variables */
   :root {
-    --primary: #4F46E5;
-    --primary-light: #818CF8;
+    --primary: #FD7C43;
+    --primaryy: #0d6efd;
+    --primary-light: #f09a75;
     --secondary: #10B981;
     --background: #F3F4F6;
     --surface: #FFFFFF;
@@ -72,8 +73,12 @@ body {
 
 .nav-link:hover,
 .nav-link.active {
-    background: var(--primary);
+    background: #FD7C43;
     color: white;
+}
+
+.change-btn:hover {
+    background-color: #d85923;
 }
 
 /* Main Content */
@@ -165,7 +170,7 @@ body {
     z-index: 1000;
 }
 
-.modal {
+/* .modal {
     background: var(--surface);
     border-radius: 12px;
     width: 90%;
@@ -173,7 +178,7 @@ body {
     max-height: 90vh;
     overflow-y: auto;
     animation: slideIn 0.3s ease;
-}
+} */
 
 .modal-header {
     padding: 1.5rem;
@@ -344,10 +349,47 @@ body {
 }
 
 .table th {
-    background-color: #4F46E5;
+    background-color: #FD7C43;
     color: white;
 }
 
 .table td {
     font-size: 14px;
+}
+
+.badge-warning{
+    background-color: #f39c12; /* Yellow */
+    color: white;
+}
+
+.badge-success {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+
+.badge-danger {
+    background-color: #dc3545; /* Red */
+    color: white;
+}
+
+/* Style the search box */
+.dataTables_filter input {
+    width: 200px; /* Adjust width */
+    padding: 8px; /* Add padding */
+    border-radius: 8px; /* Round corners */
+    border: 1px solid #16C3B0; /* Custom border */
+    background-color: #f8f9fa; /* Light background */
+    font-size: 14px;
+}
+
+/* Style the search label */
+.dataTables_filter label {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Add spacing around the search box */
+.dataTables_filter {
+    margin-bottom: 15px;
+    text-align: right;
 }

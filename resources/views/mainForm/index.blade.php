@@ -12,7 +12,8 @@
                 <div class="progress" id="progressBar"></div>
             </div>
             <div class="progress-steps">
-                <span class="step active">Ideation</span>
+                <span class="step active">Info</span>
+                <span class="step ">Ideation</span>
                 <span class="step">Market</span>
                 <span class="step">Idea</span>
                 <span class="step">Shark Tank</span>
@@ -24,11 +25,55 @@
         </div>
     </div>
 
-    <form id="startupForm" method="POST" action="{{ route('startup.store') }}">
+    <form id="startupForm" method="POST" action="">
         @csrf
 
-        <!-- Ideation Section -->
         <div class="form-section" data-section="1">
+            <h2 class="section-header">Info</h2>
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" placeholder="Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" placeholder="example@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number *</label>
+                <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="background"> Educational Background *</label>
+                <input type="text" id="background" name="background" placeholder="Background" required>
+            </div>
+
+            <div class="form-group">
+                <label for="experience">Experience *</label>
+                <input type="text" id="experience" name="experience" placeholder="Experience" required>
+            </div>
+
+            <div class="form-group">
+                <label for="startupName">Startup Name *</label>
+                <input type="text" id="startupName" name="startupName" placeholder="Startup Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="founders">Founders' Names and Numbers *</label>
+                <input type="text" id="founders" name="founders" placeholder="Founders' Names and Numbers" required>
+            </div>
+
+            <div class="form-group">
+                <label for="website">Website (if exist) *</label>
+                <input type="url" id="website" name="website" placeholder="https://example.com" required>
+            </div>
+
+        </div>
+
+        <!-- Section -->
+        <div class="form-section" data-section="2">
             <h2 class="section-header">Ideation</h2>
             <div class="form-group">
                 <label for="problemDescription">Description of the problem *</label>
@@ -46,18 +91,16 @@
                     required></textarea>
             </div>
 
-            <!-- Checkbox for proof -->
-            <div class="form-group d-flex align-items-center">
-                <input type="checkbox" id="hasProof" name="hasProof" class="mr-2">
-                <label for="hasProof">Do you have a proof link or file?</label>
-            </div>
-
-            <!-- File Upload/Proof Link Section -->
-            <div id="proofSection" class="form-group hidden">
-                <label for="proofMarketReports">Proof Required: Market reports, customer interviews, or surveys
-                </label>
-                <input type="url" id="proofLink" name="proofLink" placeholder="Enter the proof link"
-                    class="form-control" />
+            <!-- Proof Link Section -->
+            <div class="proof-container">
+                <!-- Proof Link Input Section (initially hidden) -->
+                <div class="proof-input">
+                    <div class="form-group">
+                        <label for="proofLink">Proof Link</label>
+                        <input type="url" id="proofLink" name="proofLink" class="form-control"
+                            placeholder="Enter your proof link here">
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
@@ -66,24 +109,21 @@
                     required></textarea>
             </div>
 
-            <!-- Checkbox for proof -->
-            <div class="form-group d-flex align-items-center">
-                <input type="checkbox" id="hasProof" name="hasProof" class="mr-2">
-                <label for="hasProof">Do you have a proof link or file?</label>
+            <!-- Checkbox and Proof Link Section -->
+            <div class="proof-container">
+                <!-- Proof Link Input Section (initially hidden) -->
+                <div class="proof-input">
+                    <div class="form-group">
+                        <label for="proofLink">Proof Link</label>
+                        <input type="url" id="proofLink" name="proofLink" class="form-control"
+                            placeholder="Enter your proof link here">
+                    </div>
+                </div>
             </div>
-
-            <!-- File Upload/Proof Link Section -->
-            <div id="proofSection" class="form-group hidden">
-                <label for="proofMarketReports">Proof Required: Ideation workshop outputs, mind maps, or brainstorming
-                    records </label>
-                <input type="url" id="proofLink" name="proofLink" placeholder="Enter the proof link"
-                    class="form-control" />
-            </div>
-
         </div>
 
         <!-- Market Section -->
-        <div class="form-section hidden" data-section="2">
+        <div class="form-section hidden" data-section="3">
             <h2 class="section-header">Market</h2>
             <div class="form-group">
                 <label for="targetMarketSize">Target Market Size *</label>
@@ -96,23 +136,21 @@
                     required></textarea>
             </div>
 
-            <!-- Checkbox for proof -->
-            <div class="form-group d-flex align-items-center">
-                <input type="checkbox" id="hasProof" name="hasProof" class="mr-2">
-                <label for="hasProof">Do you have a proof link or file?</label>
-            </div>
-
-            <!-- File Upload/Proof Link Section -->
-            <div id="proofSection" class="form-group hidden">
-                <label for="proofMarketReports">Proof Required: Market analysis reports, competitor data, and customer
-                    personas </label>
-                <input type="url" id="proofLink" name="proofLink" placeholder="Enter the proof link"
-                    class="form-control" />
+            <!-- Checkbox and Proof Link Section -->
+            <div class="proof-container">
+                <!-- Proof Link Input Section (initially hidden) -->
+                <div class="proof-input">
+                    <div class="form-group">
+                        <label for="proofLink">Proof Link</label>
+                        <input type="url" id="proofLink" name="proofLink" class="form-control"
+                            placeholder="Enter your proof link here">
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Idea Section -->
-        <div class="form-section hidden" data-section="3">
+        <div class="form-section hidden" data-section="4">
             <h2 class="section-header">Idea</h2>
             <div class="form-group">
                 <label for="solutionStructure">Detailed Structure of the Solution *</label>
@@ -124,10 +162,22 @@
                 <input type="text" id="proofSolution" name="proofSolution" placeholder="Provide proof (links or files)"
                     required>
             </div>
+
+            <!-- Checkbox and Proof Link Section -->
+            <div class="proof-container">
+                <!-- Proof Link Input Section (initially hidden) -->
+                <div class="proof-input">
+                    <div class="form-group">
+                        <label for="proofLink">Proof Link</label>
+                        <input type="url" id="proofLink" name="proofLink" class="form-control"
+                            placeholder="Enter your proof link here">
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Shark Tank Section -->
-        <div class="form-section hidden" data-section="4">
+        <div class="form-section hidden" data-section="5">
             <h2 class="section-header">Market Analysis and Value Proposition</h2>
             <div class="form-group">
                 <label for="competitorAnalysis">Detailed Analysis of Competitors and Market Positioning *</label>
@@ -158,10 +208,22 @@
                 <textarea id="swotAnalysis" name="swotAnalysis" placeholder="Provide a SWOT analysis of your business"
                     required></textarea>
             </div>
+
+            <!-- Checkbox and Proof Link Section -->
+            <div class="proof-container">
+                <!-- Proof Link Input Section (initially hidden) -->
+                <div class="proof-input">
+                    <div class="form-group">
+                        <label for="proofLink">Proof Link</label>
+                        <input type="url" id="proofLink" name="proofLink" class="form-control"
+                            placeholder="Enter your proof link here">
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- In-House Section -->
-        <div class="form-section hidden" data-section="5">
+        <div class="form-section hidden" data-section="6">
             <h2 class="section-header">Operational and Branding Information</h2>
             <div class="form-group">
                 <label for="staffingPlan">Staffing Plan, Hiring Strategies, and Organizational Structure *</label>
@@ -183,10 +245,22 @@
                 <textarea id="goalsPlan" name="goalsPlan"
                     placeholder="Provide a detailed plan with goals, milestones, and timelines" required></textarea>
             </div>
+
+            <!-- Checkbox and Proof Link Section -->
+            <div class="proof-container">
+                <!-- Proof Link Input Section (initially hidden) -->
+                <div class="proof-input">
+                    <div class="form-group">
+                        <label for="proofLink">Proof Link</label>
+                        <input type="url" id="proofLink" name="proofLink" class="form-control"
+                            placeholder="Enter your proof link here">
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- LIVE Show Section -->
-        <div class="form-section hidden" data-section="6">
+        <div class="form-section hidden" data-section="7">
             <h2 class="section-header">Launch and Sales Information</h2>
             <div class="form-group">
                 <label for="launchPlan">Launch Plan and Results *</label>
@@ -203,25 +277,44 @@
                 <textarea id="customerValidation" name="customerValidation"
                     placeholder="Provide detailed customer validation reports" required></textarea>
             </div>
+
+            <!-- Checkbox and Proof Link Section -->
+            <div class="proof-container">
+                <!-- Proof Link Input Section (initially hidden) -->
+                <div class="proof-input">
+                    <div class="form-group">
+                        <label for="proofLink">Proof Link</label>
+                        <input type="url" id="proofLink" name="proofLink" class="form-control"
+                            placeholder="Enter your proof link here">
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- The Boring Stuff Section -->
-        <div class="form-section hidden" data-section="7">
+        <div class="form-section hidden" data-section="8">
             <h2 class="section-header">Financial and Compliance Information</h2>
             <div class="form-group">
                 <label for="financialStatements">Financial Statements, Cost Breakdown, and Projections *</label>
                 <textarea id="financialStatements" name="financialStatements"
                     placeholder="Provide your financial statements and projections" required></textarea>
             </div>
-            <div class="form-group">
-                <label for="complianceDocuments">Compliance Documents, Licenses, and Permits *</label>
-                <textarea id="complianceDocuments" name="complianceDocuments"
-                    placeholder="List your compliance documents, licenses, and permits" required></textarea>
+
+            <!-- Checkbox and Proof Link Section -->
+            <div class="proof-container">
+                <!-- Proof Link Input Section (initially hidden) -->
+                <div class="proof-input">
+                    <div class="form-group">
+                        <label for="proofLink">Proof Link:Compliance Documents, Licenses, and Permits</label>
+                        <input type="url" id="proofLink" name="proofLink" class="form-control"
+                            placeholder="Enter your proof link here">
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Scale Up Section -->
-        <div class="form-section hidden" data-section="8">
+        <div class="form-section hidden" data-section="9">
             <h2 class="section-header">Growth and Funding Strategy</h2>
             <div class="form-group">
                 <label for="scalingPlan">Plan for Scaling Up Operations and Capacity *</label>
@@ -233,10 +326,17 @@
                 <textarea id="fundingStrategy" name="fundingStrategy"
                     placeholder="Outline your funding strategy and results" required></textarea>
             </div>
-            <div class="form-group">
-                <label for="strategicPlan">Strategic Plan for Long-Term Business Growth *</label>
-                <textarea id="strategicPlan" name="strategicPlan"
-                    placeholder="Provide your strategic plan for long-term growth" required></textarea>
+
+            <!--  Proof Link Section -->
+            <div class="proof-container">
+                <!-- Proof Link Input Section (initially hidden) -->
+                <div class="proof-input">
+                    <div class="form-group">
+                        <label for="proofLink">Proof Link:Strategic Plan for Long-Term Business Growth</label>
+                        <input type="url" id="proofLink" name="proofLink" class="form-control"
+                            placeholder="Enter your proof link here">
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -254,14 +354,126 @@
 </div>
 
 <script>
-    document.getElementById('hasProof').addEventListener('change', function () {
-        const proofSection = document.getElementById('proofSection');
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('startupForm');
+        const sections = document.querySelectorAll('.form-section');
+        const nextButton = document.getElementById('nextButton');
+        const prevButton = document.getElementById('prevButton');
+        const progressBar = document.getElementById('progressBar');
 
-        if (this.checked) {
-            proofSection.classList.remove('hidden');
-        } else {
-            proofSection.classList.add('hidden');
+        let currentSection = 0;
+
+        // Initialize progress steps with icons
+        const progressSteps = document.querySelector('.progress-steps');
+        const steps = [
+            { icon: 'info', text: 'Info' },
+            { icon: 'lightbulb', text: 'Ideation' },
+            { icon: 'chart-pie', text: 'Market' },
+            { icon: 'puzzle-piece', text: 'Idea' },
+            { icon: 'users', text: 'Shark Tank' },
+            { icon: 'building', text: 'In-House' },
+            { icon: 'tv', text: 'LIVE Show' },
+            { icon: 'file-contract', text: 'The Boring Stuff' },
+            { icon: 'chart-line', text: 'Scale Up' }
+        ];
+
+        // Clear existing steps and create new ones with icons
+        progressSteps.innerHTML = '';
+        steps.forEach((step, index) => {
+            const stepElement = document.createElement('div');
+            stepElement.className = 'step' + (index === 0 ? ' active' : '');
+            stepElement.innerHTML = `
+            <i class="fas fa-${step.icon}"></i>
+            <span>${step.text}</span>
+        `;
+            progressSteps.appendChild(stepElement);
+        });
+
+        // Validate current section
+        function validateSection(section) {
+            const inputs = section.querySelectorAll('input[required], textarea[required]');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('invalid');
+                    // Add error message below the input
+                    let errorMsg = input.nextElementSibling;
+                    if (!errorMsg || !errorMsg.classList.contains('error-message')) {
+                        errorMsg = document.createElement('div');
+                        errorMsg.className = 'error-message';
+                        input.parentNode.insertBefore(errorMsg, input.nextSibling);
+                    }
+                    errorMsg.textContent = 'This field is required';
+                } else {
+                    input.classList.remove('invalid');
+                    const errorMsg = input.nextElementSibling;
+                    if (errorMsg && errorMsg.classList.contains('error-message')) {
+                        errorMsg.remove();
+                    }
+                }
+            });
+
+            return isValid;
         }
+
+        // Update navigation
+        function updateNavigation() {
+            const isLastSection = currentSection === sections.length - 1;
+            const isFirstSection = currentSection === 0;
+
+            // Always show previous button except on first section
+            prevButton.style.display = isFirstSection ? 'none' : 'inline-flex';
+
+            // Update next/submit button
+            nextButton.innerHTML = isLastSection ?
+                'Submit <i class="fas fa-check"></i>' :
+                'Next <i class="fas fa-chevron-right"></i>';
+
+            // Update progress bar
+            const progress = ((currentSection + 1) / sections.length) * 100;
+            progressBar.style.width = `${progress}%`;
+
+            // Update step indicators
+            document.querySelectorAll('.step').forEach((step, index) => {
+                step.classList.toggle('active', index === currentSection);
+                step.classList.toggle('completed', index < currentSection);
+            });
+
+            // Show current section, hide others
+            sections.forEach((section, index) => {
+                section.style.display = index === currentSection ? 'block' : 'none';
+                section.classList.toggle('hidden', index !== currentSection);
+            });
+        }
+
+        // Navigation event handlers
+        nextButton.addEventListener('click', function () {
+            const currentSectionElement = sections[currentSection];
+
+            if (validateSection(currentSectionElement)) {
+                if (currentSection < sections.length - 1) {
+                    currentSection++;
+                    updateNavigation();
+                } else {
+                    // Submit form if on last section and all fields are valid
+                    if (form.checkValidity()) {
+                        form.submit();
+                    }
+                }
+            }
+        });
+
+        prevButton.addEventListener('click', function () {
+            if (currentSection > 0) {
+                currentSection--;
+                updateNavigation();
+            }
+        });
+
+        // Initialize navigation
+        updateNavigation();
     });
 
 </script>

@@ -1,5 +1,5 @@
 let currentSection = 1;
-const totalSections = 8;
+const totalSections = 9;
 const formData = {};
 
 // Update progress bar and steps

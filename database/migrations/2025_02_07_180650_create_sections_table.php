@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('proofs', function (Blueprint $table) {
+        Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('response_id')->constrained('responses')->onDelete('cascade');
-            $table->foreignId('question_id')->constrained('questions')->onDelete('cascade');
-            $table->text('proof_description')->nullable();
-            $table->text('proof_submission')->nullable();
+            $table->foreignId('form_id')->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->integer('section_order');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('proofs');
+        Schema::dropIfExists('sections');
     }
 };

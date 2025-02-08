@@ -1,8 +1,8 @@
 :root {
-    --primary: #4F46E5;
+    --primary: #FD7C43;
     --primary-dark: #4338CA;
     --secondary: #10B981;
-    --accent: #8B5CF6;
+    --accent: #f39b75;
     --background: #F3F4F6;
     --surface: #FFFFFF;
     --text: #1F2937;
@@ -178,20 +178,103 @@ button:active {
     transition: width 0.5s ease;
 }
 
+/* Add these styles to your existing CSS */
+
 .progress-steps {
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
+    position: relative;
 }
 
 .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.step i {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #E5E7EB;
     color: var(--text-light);
-    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.step span {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.step.active i {
+    background-color: var(--primary);
+    color: white;
+}
+
+.step.active span {
+    color: var(--primary);
     font-weight: 500;
 }
 
-.step.active {
-    color: var(--primary);
+.step.completed i {
+    background-color: var(--success);
+    color: white;
+}
+
+/* Checkbox styling */
+.form-group.d-flex {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.form-group.d-flex input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.form-group.d-flex label {
+    margin: 0;
+    cursor: pointer;
+}
+
+/* Proof section transition */
+#proofSection {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    opacity: 0;
+}
+
+#proofSection.show {
+    max-height: 500px;
+    opacity: 1;
+    transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .progress-steps {
+        overflow-x: auto;
+        padding-bottom: 1rem;
+    }
+
+    .step {
+        min-width: 100px;
+        margin: 0 0.5rem;
+    }
 }
 
 /* Admin Dashboard Styles */
@@ -216,14 +299,14 @@ button:active {
     padding: 2rem;
     border-radius: 12px;
     margin-bottom: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     border: 1px solid #E5E7EB;
     transition: all 0.3s ease;
 }
 
 .response-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .response-meta {
@@ -263,7 +346,7 @@ button:active {
 .tab-button.active {
     background-color: var(--surface);
     color: var(--primary);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .status-badge {
@@ -303,13 +386,27 @@ button:active {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Design */
@@ -345,7 +442,8 @@ button:active {
 }
 
 .form-group.d-flex label {
-    margin-left: 8px; /* Space between checkbox and label */
+    margin-left: 8px;
+    /* Space between checkbox and label */
 }
 
 /* Drag-and-drop area styling */
@@ -369,5 +467,5 @@ button:active {
 }
 
 .file-input {
-    display: none; 
+    display: none;
 }

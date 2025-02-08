@@ -8,15 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     use HasFactory;
-    protected $fillable = ['section_id', 'question_text', 'question_type', 'required' , 'proof'];
+
+    protected $fillable = ['section_id', 'question_text', 'input_type', 'is_required', 'proof_text'];
 
     public function section()
     {
-        return $this->belongsTo(FormSection::class);
+        return $this->belongsTo(Section::class);
     }
 
-    public function responses()
+    public function answers()
     {
-        return $this->hasMany(Response::class);
+        return $this->hasMany(Answer::class);
     }
 }
